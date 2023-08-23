@@ -8,18 +8,17 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"strings"
 )
 
-// Contains functions to work with data from a zip file
+// ZipData Contains functions to work with data from a zip file
 type ZipData interface {
 	files() []*zip.File
 	close() error
 }
 
-// Type for in memory zip files
+// ZipInMemory Type for in memory zip files
 type ZipInMemory struct {
 	data *zip.Reader
 }
@@ -34,7 +33,7 @@ func (d ZipInMemory) close() error {
 	return nil
 }
 
-// Type for zip files read from disk
+// ZipFile Type for zip files read from disk
 type ZipFile struct {
 	data *zip.ReadCloser
 }
@@ -243,7 +242,7 @@ func readLinks(files []*zip.File) (text string, err error) {
 }
 
 func wordDocToString(reader io.Reader) (string, error) {
-	b, err := ioutil.ReadAll(reader)
+	b, err := io.ReadAll(reader)
 	if err != nil {
 		return "", err
 	}

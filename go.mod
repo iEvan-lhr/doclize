@@ -1,4 +1,4 @@
-module doclize
+module github.com/iEvan-lhr/doclize
 
 go 1.18
 
