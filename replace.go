@@ -2,7 +2,6 @@ package doclize
 
 import (
 	"bytes"
-	tools "github.com/iEvan-lhr/exciting-tool"
 )
 
 var i = 0
@@ -24,8 +23,7 @@ func (d *Docx) replace(oldString, newString string, startIndex int) int {
 	if r.Index[0] == 0 {
 		return -1
 	}
-	d.content = r.copy([]byte(d.content), tools.Make(newString))
-	//tools.Error(d.WriteToFile("./word/" + tools.Make(i).String() + ".docx"))
+	d.content = r.copy([]byte(d.content), []byte(newString))
 	return r.LastIndex
 }
 
